@@ -1,0 +1,32 @@
+{
+  "name": "nodesimpleapitemplate",
+  "version": "1.0.0",
+  "description": "API template for Node.js with Express",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BySuspect/NodeSimpleApiTemplate.git"
+  },
+  "keywords": [
+    "nodejs",
+    "api",
+    "express"
+  ],
+  "author": "BySuspect",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.1"
+  },
+  "bugs": {
+    "url": "https://github.com/BySuspect/NodeSimpleApiTemplate/issues"
+  },
+  "homepage": "https://github.com/BySuspect/NodeSimpleApiTemplate#readme"
+}
