@@ -28,7 +28,7 @@ Follow these steps to get started with this template:
 
    - For production:
      ```bash
-     npm start
+     npm run start
      ```
 
 4. **Access the API:**
