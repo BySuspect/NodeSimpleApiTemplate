@@ -130,4 +130,5 @@ dist
 .pnp.*
 
 # files
-package-lock.json
+/.vscode
+/package-lock.json

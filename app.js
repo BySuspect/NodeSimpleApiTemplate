@@ -1,33 +1,42 @@
-const express = require("express");
-const path = require("path");
-const morgan = require("morgan"); // Middleware for logging HTTP requests
-const bodyParser = require("body-parser"); // Middleware for parsing request bodies
-const app = express(); // Create an Express application
+const express = require('express');
+const path = require('path');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const app = express();
 
-const homeRoute = require("./api/routes/HomeRoute"); // Import the home route module
-const demoRoute = require("./api/routes/DemoRoute"); // Import the demo route module
+// Importing dotenv to use environment variables
+require('dotenv').config();
+
+// Importing routes
+const homeRoute = require('./api/routes/HomeRoute');
+const demoRoute = require('./api/routes/DemoRoute');
 
 // Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Set up the 'views' directory for template rendering using EJS
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 // Enable request logging in the development environment
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
 // Parse incoming request bodies as JSON
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/json' }));
+
+// Parse incoming request bodies as TEXT
+app.use(bodyParser.text({ type: 'text/*' }));
+
+// Parse incoming request bodies as RAW
+app.use(bodyParser.raw({ type: 'application/*' }));
 
 // Define routes for the home and demo endpoints
-app.use("/", homeRoute);
-app.use("/demo", demoRoute);
+app.use('/', homeRoute);
+app.use('/demo', demoRoute);
 
 // Middleware to handle 404 errors (route not found)
 app.use((req, res, next) => {
-  const error = new Error("Not Found");
+  const error = new Error('Not Found');
   error.status = 404;
   next(error);
 });
